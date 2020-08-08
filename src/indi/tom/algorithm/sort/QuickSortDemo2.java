@@ -1,4 +1,4 @@
-package indi.tom.Algorithm.recursion.indi.tom.sort;
+package indi.tom.algorithm.sort;
 
 import java.util.Arrays;
 

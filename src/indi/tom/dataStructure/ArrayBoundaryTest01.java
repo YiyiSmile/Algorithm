@@ -1,4 +1,4 @@
-package indi.tom.DataStructure;
+package indi.tom.dataStructure;
 
 /**
  * @Author totian

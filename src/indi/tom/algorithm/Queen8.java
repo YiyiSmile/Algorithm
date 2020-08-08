@@ -1,4 +1,4 @@
-package indi.tom.Algorithm.recursion;
+package indi.tom.algorithm;
 
 /**
  * @Author Tom

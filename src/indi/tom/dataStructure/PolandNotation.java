@@ -1,7 +1,6 @@
-package indi.tom.DataStructure;
+package indi.tom.dataStructure;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 

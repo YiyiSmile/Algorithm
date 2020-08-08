@@ -1,6 +1,4 @@
-package indi.tom.DataStructure;
-
-import sun.text.resources.th.BreakIteratorInfo_th;
+package indi.tom.dataStructure;
 
 /**
  * @Author totian
