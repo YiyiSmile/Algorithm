@@ -10,14 +10,13 @@ import java.util.Arrays;
  */
 public class InsertSort {
     public static void main(String[] args) {
-        int[] elements = {21,11,5,1,5,45,34,23,7,8,66,98,54,34,33,79};
-
+        int[] elements = {21, 11, 38, 1, 5, 45, 34, 23, 7, 8, 66, 98, 54, 27, 33, 79};
         System.out.println(Arrays.toString(elements));
-        InsertSort(elements);
+        insertSort(elements);
         System.out.println(Arrays.toString(elements));
     }
-    public static void InsertSort(int[] elements){
-        if(elements.length <= 0 || elements == null)
+    public static void insertSort(int[] elements){
+        if( elements == null || elements.length <= 0 )
             throw new IllegalArgumentException("The argument is illegal!");
         for(int i=1;i<elements.length;i++){
             int insertValue = elements[i];
