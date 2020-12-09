@@ -6,7 +6,7 @@ package indi.tom.test.indi.tom;
  * @Version 1.0
  * @Description
  */
-public class Test01 extends Test02{
+public class Test01 extends Test02 {
     private String a;
     public Test01(){
         //显示调用父类有参构造

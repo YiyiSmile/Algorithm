@@ -18,6 +18,9 @@ public class QuickSortDemo2 {
     }
 
     public static void quickSort2(int[] elements, int left, int right) {
+        //退出条件。
+        // left=right：当中心点pivot左边或右边只有一个元素的情况
+        //left > right: 当pivot在最左边或最右边的时候
         if(left >= right ) return;
         int pivot = elements[(right + left) / 2];
         //l is the index that all elements on the left of l is smaller than pivot
