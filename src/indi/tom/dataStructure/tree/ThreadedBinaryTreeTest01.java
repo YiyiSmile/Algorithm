@@ -187,12 +187,12 @@ public class ThreadedBinaryTreeTest01 {
             //2. thread current node
             if(node.getLeft() == null){
                 node.setLeft(pre);
-                node.setLeftType(1);
+                node.setleftIsThreaded(true);
 
 
             }
             if(pre != null && pre.getRight() == null){
-                pre.setRightType(1);
+                pre.setrightIsThreaded(1);
                 pre.setRight(node);
             }
             pre = node;
@@ -209,13 +209,13 @@ public class ThreadedBinaryTreeTest01 {
         private void threadedBinaryTreeInOrder1(HeroNode node){
             if(node == null) return;
             //1. iterate left sub tree
-            if(node.getLeftType() == 0){
+            if(node.getLeftIsThreaded() == false){
                 threadedBinaryTreeInOrder1(node.getLeft());
             }
             //2. iterate current node
             System.out.println(node);
             //3. iterate right sub tree
-            if(node.getRightType() == 0){
+            if(node.getrightIsThreaded() == 0){
                 threadedBinaryTreeInOrder1(node.getRight());
             }
         }
@@ -224,11 +224,11 @@ public class ThreadedBinaryTreeTest01 {
         private void threadedBinaryTreeInOrder(){
             HeroNode node = root;
             while(node != null){
-                while(node.getLeftType() == 0 ){
+                while(node.getLeftIsThreaded() == false ){
                     node = node.getLeft();
                 }
                 System.out.println(node);
-                while(node.getRightType() == 1 && node.getRight() != null){
+                while(node.getrightIsThreaded() == 1 && node.getRight() != null){
                     node = node.getRight();
                     System.out.println(node);
                 }
@@ -248,12 +248,12 @@ public class ThreadedBinaryTreeTest01 {
         private HeroNode left;
         private HeroNode right;
 
-        //leftType = 0 -> point to left node
-        //leftType = 1 -> point to inoder predecessor,
-        private int leftType;
-        //rightType = 0 -> point to right node
-        //rightType = 1 -> point to inoder successor,
-        private int rightType;
+        //leftIsThreaded = 0 -> point to left node
+        //leftIsThreaded = 1 -> point to inoder predecessor,
+        private boolean leftIsThreaded;
+        //rightIsThreaded = 0 -> point to right node
+        //rightIsThreaded = 1 -> point to inoder successor,
+        private int rightIsThreaded;
 
 
         public HeroNode(Integer no, String name) {
@@ -293,20 +293,20 @@ public class ThreadedBinaryTreeTest01 {
             this.right = right;
         }
 
-        public int getLeftType() {
-            return leftType;
+        public boolean getLeftIsThreaded() {
+            return leftIsThreaded;
         }
 
-        public void setLeftType(int leftType) {
-            this.leftType = leftType;
+        public void setleftIsThreaded(boolean leftIsThreaded) {
+            this.leftIsThreaded = leftIsThreaded;
         }
 
-        public int getRightType() {
-            return rightType;
+        public int getrightIsThreaded() {
+            return rightIsThreaded;
         }
 
-        public void setRightType(int rightType) {
-            this.rightType = rightType;
+        public void setrightIsThreaded(int rightIsThreaded) {
+            this.rightIsThreaded = rightIsThreaded;
         }
 
         @Override
