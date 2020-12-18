@@ -29,22 +29,22 @@ public class HuffmanCode {
 
         byte[] bytes = testStr.getBytes();//40 bytes
 
-        Node huffmanTreeRootNode = createHuffmanTree(bytes);
 
-        createHuffmanCodeMap(huffmanTreeRootNode);
+        createHuffmanCodeMap(bytes);
         for (Map.Entry<Byte, Integer> byteIntegerEntry : byteIntegerHashMap.entrySet()) {
             char c = (char) byteIntegerEntry.getKey().byteValue();
             System.out.println(c + " -> " + byteIntegerEntry.getValue());
         }
-        for (Map.Entry<Byte, String> byteStringEntry : byteStringHashMap.entrySet()) {
+        /*for (Map.Entry<Byte, String> byteStringEntry : byteStringHashMap.entrySet()) {
             char c = (char) byteStringEntry.getKey().byteValue();
             System.out.println(c + " -> " + byteStringEntry.getValue());
-        }
+        }*/
+        System.out.println(byteStringHashMap);
     }
 
 
 
-    private Node createHuffmanTree(byte[] array){
+    public Node createHuffmanTree(byte[] array){
         //1 count the times of occurrence for each byte element and put them into a map
         for (byte b : array) {
             if(byteIntegerHashMap.get(b) == null){
@@ -75,7 +75,9 @@ public class HuffmanCode {
         return newNode;
     }
 
-    private HashMap<Byte, Integer> createHuffmanCodeMap(Node node){
+    public HashMap<Byte, String> createHuffmanCodeMap(byte[] array){
+        Node node = createHuffmanTree(array);
+
         //2. Traverse the huffman tree leaf code,generate a code for each leaf node
         //and put it into a Map<Byte, String>
 
@@ -85,7 +87,7 @@ public class HuffmanCode {
 
         createHuffmanCode(node.getRight(), "1");
 
-        return byteIntegerHashMap;
+        return byteStringHashMap;
 
     }
 
@@ -109,7 +111,7 @@ public class HuffmanCode {
     }
 
 
-    class Node implements Comparable{
+    private class Node implements Comparable{
         //number of occurrence for a char(or byte) in the array
         private Integer count;
         private Byte b;

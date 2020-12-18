@@ -22,10 +22,21 @@ public class TestJDK {
         int j = b1;
         System.out.println(Integer.toBinaryString(j));
         j |= 256;*/
-        byte b = 2; //11111110
-        int i = b;
-        i |= 256;
-        System.out.println(Integer.toBinaryString(i));
+//        byte b = 2;
+//        int c = b;
+//        System.out.println(Integer.toBinaryString(b));
+//        String a = "abc";
+//        String substring = a.substring(2, 3);
+//        System.out.println(substring);
+         byte b = -36;
+
+        System.out.println(Integer.toBinaryString(b));
+//        char a = 'a';
+//        byte c = (byte)a;
+//        System.out.println(Byte.toString(c));
+//        int i = b;
+//        i |= 256;
+//        System.out.println(Integer.toBinaryString(i));
 
 //        System.out.println(i1);
 //        System.out.println(i);
