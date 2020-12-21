@@ -25,6 +25,7 @@ public class HuffmanCode {
      */
     @Test
     public void test01(){
+
         String testStr = "i like like like java do you like a java";
 
         byte[] bytes = testStr.getBytes();//40 bytes
