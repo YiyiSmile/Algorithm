@@ -2,6 +2,8 @@ package indi.tom.test.indi.tom;
 
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
+
 /**
  * @Author Tom
  * @Date 2020/12/16 13:56
@@ -10,7 +12,7 @@ import org.junit.Test;
  */
 public class TestJDK {
     @Test
-    public void test01(){
+    public void test01() throws FileNotFoundException {
 //        String s = Integer.toBinaryString(7);
 //        System.out.println(s);
 //        byte b = -127;
@@ -28,9 +30,9 @@ public class TestJDK {
 //        String a = "abc";
 //        String substring = a.substring(2, 3);
 //        System.out.println(substring);
-         byte b = -36;
-
-        System.out.println(Integer.toBinaryString(b));
+//         byte b = -36;
+//
+//        System.out.println(Integer.toBinaryString(b));
 //        char a = 'a';
 //        byte c = (byte)a;
 //        System.out.println(Byte.toString(c));
@@ -46,6 +48,10 @@ public class TestJDK {
 //        System.out.println();
 //        System.out.println(Integer.toBinaryString(a));
 //        System.out.println();
+
+//        BufferedInputStream bis = new BufferedInputStream(new FileInputStream("D:\\Java\\IdeaProjects\\DataStructures&Algroithm\\resources\\HuffmanCode.java"));
+;//        bis.re
+
     }
 
 }
