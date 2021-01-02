@@ -11,7 +11,7 @@ import java.util.Map;
  * @Author Tom
  * @Date 2020/12/16 17:33
  * @Version 1.0
- * @Description Test using Huffman code to zip/unzip file.
+ * @Description
  */
 public class HuffmanCode {
 

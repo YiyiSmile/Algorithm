@@ -15,12 +15,13 @@ import java.util.Map;
  */
 public class ZipUnzipByteArrayWithHuffmanCode {
 
+
     //if we don't use this effectiveBitNumber to record how many effective bits in last byte of
     // huffman string, it will have bug, if the last byte of huffman string is started with 0, issue will
     // happen. For example if we test string: "i like like like java do you like a javak";
-    //The current program doesn't know how many bits there are in last byte belong to
-    //the huffman code string. Will improve it in next demo version by adding a filed indicating
-    //how many bits in last byte belong to the huffman string.
+    //If we don't use this variable, the program doesn't know how many bits there are in last byte belong to
+    //the huffman code string.
+
     private int effectiveBitNumber;
     private HashMap<Byte, String> huffmanCodeMap;
 

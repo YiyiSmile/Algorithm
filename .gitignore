@@ -1,0 +1,6 @@
+.git
+junit
+out
+.classpath
+.project
+*.iml
