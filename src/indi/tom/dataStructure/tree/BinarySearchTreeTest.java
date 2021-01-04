@@ -10,7 +10,7 @@ import org.junit.Test;
  * @Version: 1.0
  * @Description: A demo of BST, including search, add, delete function.
  */
-public class BinarySortTreeTest {
+public class BinarySearchTreeTest {
 
 	@Test
 	public void test01() throws ValueNotFoundException {
