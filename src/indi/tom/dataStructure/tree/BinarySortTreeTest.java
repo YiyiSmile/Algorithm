@@ -2,6 +2,8 @@ package indi.tom.dataStructure.tree;
 
 import org.junit.Test;
 
+
+
 /**
  * @Author: Tom
  * @Date: 2021年1月3日 下午8:43:56
@@ -11,52 +13,57 @@ import org.junit.Test;
 public class BinarySortTreeTest {
 
 	@Test
-	public void test01() {
+	public void test01() throws ValueNotFoundException {
 		Node node12 = new Node(12);
 
-//		Node node8 = new Node(8);
-//		Node node18 = new Node(18);
-//		node12.setLeft(node8);
-//		node12.setRight(node18);
-//		
-//		Node node5 = new Node(5);
-//		Node node10 = new Node(10);
-//		node8.setLeft(node5);
-//		node8.setRight(node10);
-//		
-//		Node node15 = new Node(15);
-//		Node node22 = new Node(22);
-//		node18.setLeft(node15);
-//		node18.setRight(node22);
-//		
-//		Node node4 = new Node(4);
-//		Node node6 = new Node(6);
-//		node5.setLeft(node4);
-//		node5.setRight(node6);
-//		
-//		Node node9 = new Node(9);
-//		Node node11 = new Node(11);
-//		node10.setLeft(node9);
-//		node10.setRight(node11);
-//		Node node13 = new Node(13);
-//		Node node17 = new Node(17);
-//		node15.setLeft(node13);
-//		node15.setRight(node17);
-
+		Node node8 = new Node(8);
+		Node node18 = new Node(18);
+		node12.setLeft(node8);
+		node12.setRight(node18);
+		
+		Node node5 = new Node(5);
+		Node node10 = new Node(10);
+		node8.setLeft(node5);
+		node8.setRight(node10);
+		
+		Node node15 = new Node(15);
+		Node node22 = new Node(22);
+		node18.setLeft(node15);
+		node18.setRight(node22);
+		
+		Node node4 = new Node(4);
+		Node node6 = new Node(6);
+		node5.setLeft(node4);
+		node5.setRight(node6);
+		
+		Node node9 = new Node(9);
+		Node node11 = new Node(11);
+		node10.setLeft(node9);
+		node10.setRight(node11);
+		Node node13 = new Node(13);
+		Node node17 = new Node(17);
+		node15.setLeft(node13);
+		node15.setRight(node17);
 		BinarySortTree binarySortTree = new BinarySortTree(node12);
-		for (int i = 4; i < 20; i++) {
-			binarySortTree.add(i);
-		}
-		binarySortTree.inOrder();
+
 //		binarySortTree.add(7);
 		System.out.println("*******");
 //		binarySortTree.inOrder();
 //		binarySortTree.delete(8);
 //		binarySortTree.inOrder();
-//		binarySortTree.delete(9);
-//		binarySortTree.delete(10);
-//		binarySortTree.inOrder();
+		binarySortTree.delete(9);
+		binarySortTree.delete(10);
+		binarySortTree.inOrder();
 
+	}
+	
+	@Test
+	public void test02() {
+//		
+//		for (int i = 4; i < 20; i++) {
+//			binarySortTree.add(i);
+//		}
+//		binarySortTree.inOrder();
 	}
 
 	class Node {
@@ -141,6 +148,13 @@ public class BinarySortTreeTest {
 			}
 		}
 
+		@Override
+		public String toString() {
+			return "Node [value=" + value + "]";
+		}
+		
+		
+
 	}
 
 	class BinarySortTree {
@@ -170,19 +184,25 @@ public class BinarySortTreeTest {
 			return root.add(value);
 		}
 
-		// BST delete --****Difficult*****
+	
 		/**
-		 * param: return: false: no specified value find in the tree true: successfully
-		 * remove the node with the specified value successfully
+		 * 
+		* @Description: Delete the node with given value from the tree ****Difficult*****
+		* @param  value The Node value to be deleted
+		* @return  no return value
+		* @throws ValueNotFoundException when the given value is not found in the tree.
 		 */
-		public boolean delete(int value) {
+		public void delete(int value) throws ValueNotFoundException {
+			//1. root is null or not found in the tree
 			if (root == null)
-				return false;
+				throw new ValueNotFoundException("This is a blank tree");
 			Node searchResultNode = search(value);
 			if (searchResultNode == null)
-				return false;
+				throw new ValueNotFoundException("The given value is not found");
 			Node parent = searchParent(root, value);
-			// root node is the one that has the value
+			System.out.println("searchResultNode: " + searchResultNode);
+			System.out.println("parentNode:" + parent);
+			// 2. root node is the one that has the value
 			if (parent == null) {
 				if (root.getLeft() == null && root.getRight() == null) {
 					root = null;
@@ -194,29 +214,33 @@ public class BinarySortTreeTest {
 				} else if (root.getLeft() == null && root.getRight() != null) {
 					this.root = root.getRight();
 				}
-
+			//3. the value exists being held by an non-root node
 			} else {
+				//3.1 searchResultNode is a leaf node, remove it directly
 				if (searchResultNode.getLeft() == null && searchResultNode.getRight() == null) {
 					if (parent.getLeft() == searchResultNode) {
 						parent.setLeft(null);
 					} else {
 						parent.setRight(null);
 					}
+				//3.2 both the left and right child of searchResultNode is not null
 				} else if (searchResultNode.getLeft() != null && searchResultNode.getRight() != null) {
 					int minValue = getAndDeleteRightTreeMinValue(searchResultNode.getRight());
 					searchResultNode.setValue(minValue);
+				//3.3 left child is not null
 				} else if (searchResultNode.getLeft() != null && searchResultNode.getRight() == null) {
 					parent.setLeft(searchResultNode.getLeft());
+				//3.4 right child is not null
 				} else {
-					parent.setLeft(searchResultNode.getRight());
+					parent.setRight(searchResultNode.getRight());
 				}
 			}
-			return true;
+
 
 		}
 
 		// get the min value in the right subtree and remove the corresponding node
-		private int getAndDeleteRightTreeMinValue(Node node) {
+		private int getAndDeleteRightTreeMinValue(Node node) throws ValueNotFoundException {
 
 			while (node.getLeft() != null) {
 				node = node.getLeft();
@@ -256,6 +280,21 @@ public class BinarySortTreeTest {
 			}
 
 			return null;
+		}
+	}
+	
+	class ValueNotFoundException extends Exception{
+		
+		public ValueNotFoundException() {
+			super();
+		}
+		
+		public ValueNotFoundException(String message) {
+			super(message);
+		}
+		
+		public ValueNotFoundException(String message, Throwable cause) {
+			super(message, cause);
 		}
 	}
 
