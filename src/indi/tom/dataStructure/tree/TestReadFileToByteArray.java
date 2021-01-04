@@ -1,6 +1,6 @@
 package indi.tom.dataStructure.tree;
 
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 
 import java.io.File;
@@ -20,7 +20,7 @@ public class TestReadFileToByteArray {
      */
     @Test
     public void test() throws IOException {
-        byte[] bytes = FileUtils.readFileToByteArray(new File("D:\\Java\\IdeaProjects\\DataStructures&Algroithm\\resources\\HuffmanCode.java"));
-        System.out.println(bytes.length);
+//        byte[] bytes = FileUtils.readFileToByteArray(new File("D:\\Java\\IdeaProjects\\DataStructures&Algroithm\\resources\\HuffmanCode.java"));
+//        System.out.println(bytes.length);
     }
 }

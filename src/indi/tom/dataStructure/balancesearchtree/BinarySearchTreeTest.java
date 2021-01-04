@@ -1,4 +1,4 @@
-package indi.tom.dataStructure.tree;
+package indi.tom.dataStructure.balancesearchtree;
 
 import org.junit.Test;
 
